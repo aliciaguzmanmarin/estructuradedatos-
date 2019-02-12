@@ -1,0 +1,23 @@
+// 12.02.2019.cpp : Defines the entry point for the console application.
+//
+//librerias//
+#include "stdafx.h"
+#include "stdlib.h"
+#include "stdio.h"
+#include "iostream"
+#include "conio.h"
+ using namespace std ;
+
+
+
+void main ()//prototipos. encabezado de un subprograma //
+{   float  P,p ;
+    do {cout<<"ingrese precio : ";
+        cin>> P ;}
+    while (P<0);
+
+    p=(P*0.13)+P;//acumulador//
+
+    cout<<endl<<"Precio + IVA : "<< p ;
+    getch();
+}
