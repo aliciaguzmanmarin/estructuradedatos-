@@ -1,0 +1,73 @@
+// 19.02.2019 2.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include "math.h"
+#include "conio.h"
+#include <iostream>
+ using namespace std;
+
+//prototipos 
+ float discriminante (float a,float b,float c);
+ void reales (float d,float a,float b,float &x1,float &x2);
+ float unica (float a,float b);
+
+ void main ()
+ { float a,b,c,x1,x2,d,x ;
+   char res;
+ do {
+  do {cout<<endl<<"ingrese A : "<<endl;
+      cin>>a ;
+     } 
+  while (a==0);
+
+  cout<<"ingrese B : "<<endl;
+  cin>> b ;
+ 
+  cout<<"ingrese C : "<<endl;
+  cin>> c ;
+
+  d= discriminante (a,b,c);
+
+  if (d==0)
+  {cout<<"solucion unica"<<endl;
+   x=unica(a,b);
+   cout<<"X : "<<x;
+  }
+  else
+  {   if (d>0) 
+       { reales (d,a,b,x1,x2);
+         cout<<"X1 = "<<x1<<endl;
+	     cout<<"X2 = "<<x2<<endl;
+            
+       }
+      else
+	  {cout<<"soluciones imaginarias "<<endl;
+       cout<<"X1 = "<<-b/(2*a)<<" + "<<sqrt(-d)/(2*a)<<" i "<<endl;
+	   cout<<"X2 = "<<-b/(2*a)<<" - "<<sqrt(-d)/(2*a)<<" i "<<endl;
+      }
+  }
+  cout<<endl<<" s para continuar ";
+  cin>>res;
+ }while (res=='s');
+ 
+  getch ();
+ 
+ }
+
+ float discriminante (float a,float b, float c)
+ { float D ;
+   D = b*b-4*a*c;
+   return D ;
+ }
+
+  void reales (float d,float a,float b,float &x1,float &x2)
+  { 
+	x1=(-b+sqrt(d)/2*a);
+    x2=(-b-sqrt(d)/2*a);
+  }
+
+  float unica (float a,float b)
+  { float x = -b/2*a;
+    return x ;
+  }
