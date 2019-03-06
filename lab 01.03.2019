@@ -1,0 +1,218 @@
+Persona1.h*
+
+#pragma once
+
+class Persona1
+
+{
+
+ private : //atributos
+
+       int CI ;
+
+       int edad ;
+
+ 
+
+ public: //metodos
+
+       Persona1(int _CI, int _edad);
+
+       void leer ();
+
+       void correr ();
+
+       ~Persona1(void);
+
+};
+
+ 
+
+Persona1.cpp*
+
+#include <iostream>
+
+ using namespace std;
+
+ 
+
+ 
+
+Persona1::Persona1(int _CI, int _edad)
+
+{ // se inicializan los atributos
+
+       CI=_CI ;
+
+       edad=_edad ; 
+
+ 
+
+}
+
+ 
+
+ 
+
+Persona1::~Persona1(void)
+
+{
+
+ 
+
+}
+
+ 
+
+void Persona1:: leer ()
+
+{
+
+       cout<<"Soy "<<CI<<"y estoy leyendo un libro "<<endl ;
+
+}
+
+ 
+
+void Persona1:: correr ()
+
+{
+
+   cout<<"Soy "<<CI<<", tengo "<<edad<<"años y estoy corriendo "<<endl;
+
+}
+
+ 
+
+Persona.cpp
+
+#include "stdafx.h"
+
+#include "Persona1.h"
+
+#include <iostream>
+
+#include "conio.h"
+
+ using namespace std ;
+
+ 
+
+int _tmain(int argc, _TCHAR* argv[])
+
+{
+
+       Persona1 P1(6548751,25);
+
+       P1.leer();
+
+       P1.correr();
+
+       getch();
+
+}
+
+Triangulo.h*
+
+#pragma once
+
+class Triangulo
+
+{
+
+private :
+
+       float base ;
+
+       float altura ;
+
+ 
+
+public:
+
+       Triangulo(float _base, float _altura);
+
+       float area ();
+
+       ~Triangulo(void);
+
+};
+
+ 
+
+Triangulo.cpp*
+
+#include "StdAfx.h"
+
+#include "Triangulo.h"
+
+ 
+
+Triangulo::Triangulo(float _base, float _altura)
+
+{
+
+       base=_base ;
+
+       altura=_altura;
+
+}
+
+ 
+
+ 
+
+Triangulo::~Triangulo(void)
+
+{
+
+}
+
+float   Triangulo :: area ()
+
+{
+
+       float A ;
+
+       A=(base*altura)/2;
+
+       return A ;
+
+}
+
+ 
+
+Ej.Triangulo.cpp
+
+// Ej.Triangulo.cpp : Defines the entry point for the console application.
+
+//
+
+ 
+
+#include "stdafx.h"
+
+#include <iostream>
+
+#include "conio.h"
+
+#include "Triangulo.h"
+
+ using namespace std;
+
+ 
+
+void main()
+
+{  float x ;
+
+       Triangulo T1(5,10);
+
+   x = T1.area();
+
+   cout<<endl<<"el area es : "<<x<<endl;
+
+       getch();
+
+}
+
