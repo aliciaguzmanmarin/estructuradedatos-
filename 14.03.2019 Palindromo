@@ -1,0 +1,68 @@
+Palindromo.h
+#pragma once
+#include <iostream>
+#include <string>
+ using namespace std;
+class Palindromo
+{
+private:
+	string T ; 
+public:
+	Palindromo(void);
+	~Palindromo(void);
+	bool Verificar ();
+	void cargar ();
+};
+
+Palindromo.cpp
+#include "StdAfx.h"
+#include "Palindromo.h"
+#include <iostream>
+#include <string>
+ using namespace std;
+
+Palindromo::Palindromo(void)
+{
+}
+Palindromo::~Palindromo(void)
+{
+}
+
+bool Palindromo::Verificar ()
+{ bool K=true ;
+  int l = T.length();
+  for (int i=0 ; i<l/2 ; i++)
+     { if (T[i]!=T[l-1-i])
+         { K=false ;
+           return K;
+         }
+     } return K;
+}
+void Palindromo::cargar ()
+{ cout<<"ingrese el texto ";
+  getline (cin,T);
+}
+
+
+// Ejemplo Palindromo.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+#include <string>
+#include "Palindromo.h"
+#include "conio.h"
+ using namespace std;
+
+
+
+ void main ()
+{ 
+  bool k = false ;
+  Palindromo T1 ;
+  T1.cargar();
+  k = T1.Verificar();
+  if (k==true){cout<<"es palindromo ";}
+  else {cout<<"no es palindromo ";}
+  getch();
+}
