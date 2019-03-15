@@ -1,0 +1,53 @@
+#pragma once
+
+class Examen
+{
+private:
+	float radio,altura;
+public:
+	Examen(void);
+	~Examen(void);
+	float area ();
+};
+
+
+#include "StdAfx.h"
+#include "Examen.h"
+#include <iostream>
+ using namespace std ;
+
+Examen::Examen(void)
+{
+}
+
+Examen::~Examen(void)
+{
+}
+
+float Examen::area ()
+{ float A, a1 ,a2 ;
+  cout<<"ingrese radio : ";
+  cin>>radio;
+  cout<<"ingrese altura : ";
+  cin>>altura ;
+  a1=3.1416*radio*radio;
+  a2=2*3.1416*radio*altura;
+  A=2*a1+a2;
+  return A ;
+}
+
+// laboratorio 15.03.2019.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+#include "Examen.h"
+ using namespace std ;
+  
+void main ()
+{
+    Examen E1 ;
+    cout<<"el area es : "<<E1.area();
+  getch();
+}
