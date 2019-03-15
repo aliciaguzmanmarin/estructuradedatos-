@@ -1,0 +1,60 @@
+#pragma once
+class Digitos
+{
+private:
+	int N ;
+public:
+	Digitos(void);
+	~Digitos(void);
+	bool determinar ();
+};
+
+
+#include "StdAfx.h"
+#include "Digitos.h"
+#include <iostream>
+ using namespace std;
+
+
+Digitos::Digitos(void)
+{
+}
+
+Digitos::~Digitos(void)
+{
+}
+
+bool Digitos::determinar ()
+{  bool k=true; int n ;
+	cout<<"ingrese un numero : ";
+    cin>>N;
+	while (N>0)
+	{n=N%10;
+	 if (n%2==0 )
+	 { k=true;
+	   return k;
+	 }
+     N=N/10;   
+	} k=false ;
+	 return k;
+}
+
+
+// dos.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+#include "Digitos.h"
+#include "conio.h"
+ using namespace std;
+
+
+void main()
+{ Digitos D1 ;
+  bool k=true;
+  k = D1.determinar();
+  if (k==true){cout<<"el numero tiene digitos pares";}
+  else {cout<<"el numero no tiene digitos pares";}
+  getch();
+}
