@@ -1,0 +1,704 @@
+1.	Hacer un programa para sacar el máximo valor de un vector de valores ya sean reales o enteros.
+Mayor.h
+#pragma once
+class Mayor
+{
+private :
+	int n ;
+	float V[100] ;
+public:
+	Mayor(void);
+	~Mayor(void);
+	void cargar (float V[], int n);
+	void mostrar (float V[], int n);
+	float valormaximo (float V[], int n );
+};
+
+Mayor.cpp
+#include "StdAfx.h"
+#include "Mayor.h"
+#include <iostream>
+ using namespace std ;
+
+
+Mayor::Mayor(void)
+{
+}
+
+Mayor::~Mayor(void)
+{
+}
+
+void Mayor::cargar (float V[], int n )
+{ for (int i=0 ; i<n ;i++)
+     { cout<<"V["<<i+1<<"] : ";
+       cin>>V[i] ;
+     } cout<<"\n";
+}
+
+void Mayor::mostrar (float V[], int n )
+{ for (int i=0 ; i<n ;i++)
+     { cout<<V[i]<<" - ";
+     }
+}
+
+float Mayor::valormaximo (float V[], int n )
+{ int May= V[0];
+  for (int i=0; i<n ;i++)
+    { if (V[i]>May)
+       {May=V[i] ;}
+    }
+  return May ;
+}
+P1 E1.cpp
+// P1 E1.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include "conio.h"
+#include "Mayor.h"
+#include <iostream>
+ using namespace std ;
+#define Max 100
+
+void main ()
+{ int N ;
+  float Vec[Max],M;
+  do 
+  {cout<<"ingrese cantidad de elementos : "; 
+   cin>> N ;
+  }while (N>Max ||N<0);
+
+  Mayor V1 ;
+  V1.cargar(Vec,N);
+  V1.mostrar(Vec,N);
+  M = V1.valormaximo (Vec,N);
+  cout<<"\n el maximo valor del vector es : "<< M ;
+ getch();
+}
+
+
+2.	Hacer un programa para sacar el mínimo valor de un vector de valores ya sean reales o enteros.
+Minimo.h
+#pragma once
+class Minimo
+{
+private :
+	int n ;
+	float V[100];
+public:
+	Minimo(void);
+	~Minimo(void);
+	void cargar (float V[], int n);
+	void mostrar (float V[], int n);
+	float valorminimo (float V[],int n);
+};
+
+Minimo.cpp
+#include "StdAfx.h"
+#include "Minimo.h"
+#include <iostream>
+ using namespace std ;
+
+Minimo::Minimo(void)
+{
+}
+
+Minimo::~Minimo(void)
+{
+}
+
+void Minimo::cargar (float V[], int n)
+{ for (int i=0 ; i<n ;i++)
+     { cout<<"V["<<i+1<<"] : ";
+       cin>>V[i] ;
+     } cout<<"\n";
+}
+
+void Minimo::mostrar (float V[], int n)
+{ for (int i=0 ; i<n ;i++)
+     { cout<<V[i]<<" - ";
+     }
+}
+
+float Minimo::valorminimo (float V[], int n)
+{ int Min=V[0];
+  for (int i=0; i<n ;i++)
+    { if (V[i]<Min)
+       {Min=V[i] ;}
+    }
+  return Min ;
+}
+
+P1 E2.cpp*
+// P1 E2.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include "conio.h"
+#include "Minimo.h"
+#include <iostream>
+ using namespace std 
+#define Max 100
+
+void main ()
+{ int N ;
+  float Vec[Max],M;
+  do 
+  {cout<<"ingrese cantidad de elementos : "; 
+   cin>> N ;
+  }while (N>Max ||N<0);
+
+  Minimo V1 ;
+  V1.cargar(Vec,N);
+  V1.mostrar(Vec,N);
+  M = V1.valorminimo (Vec,N);
+  cout<<"\n el minimo valor del vector es : "<< M ;
+ getch();
+}
+
+3.	Hacer un programa para sacar el promedio de valores de un vector.
+Promedio.h
+#pragma once
+class Promedio
+{
+private :
+	int n ;
+	float V[100];
+public:
+	Promedio(void);
+	~Promedio(void);
+	void cargar (float V[], int n );
+	void mostrar (float V[], int n );
+	float promedio (float V[], int n);
+};
+ Promedio.cpp
+#include "StdAfx.h"
+#include "Promedio.h"
+#include <iostream>
+ using namespace std ;
+
+
+Promedio::Promedio(void)
+{}
+
+Promedio::~Promedio(void)
+{}
+
+void Promedio:: cargar (float V[], int n )
+{for (int i=0 ; i<n ;i++)
+     { cout<<"V["<<i+1<<"] : ";
+       cin>>V[i] ;
+     } cout<<"\n";
+}
+void Promedio::mostrar (float V[], int n )
+{ for (int i=0 ; i<n ;i++)
+     { cout<<V[i]<<" - ";
+     }
+
+}
+float Promedio::promedio (float V[], int n)
+{ float S=0 ,P ;
+  for (int i=0; i<n ;i++)
+     { S=S+V[i];
+     }
+  P=S/n;
+  return P;
+}
+
+P1 E3.cpp
+// P1 E3.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include "conio.h"
+#include <iostream>
+#include "Promedio.h"
+ using namespace std;
+
+void main()
+{ int N ;
+  float Vec[100];
+  do { cout<<"ingrese cantidad de elementos : "; 
+       cin>> N ;
+     }while (N>100 || N<0);
+  Promedio P1 ;
+  P1.cargar(Vec,N);
+  P1.mostrar(Vec,N);
+  cout<<"\n Promedio = "<<P1.promedio(Vec,N);
+ getch();
+}
+
+4.	Hacer un programa para revertir la lista de valores de un vector, en otro vector, es decir se debe mantener el vector original.
+Revertir.h
+#pragma once
+class Revertir
+{
+private:
+	int n ;
+	float A[100],B[100];
+public:
+	Revertir(void);
+	~Revertir(void);
+	void cargar (float A[], int n);
+	void mostrar (float A[], int n);
+	void revertir (float A[],float B[],int n);
+};
+
+Revertir.cpp
+#include "StdAfx.h"
+#include "Revertir.h"
+#include <iostream>
+ using namespace std;
+
+Revertir::Revertir(void)
+{
+}
+Revertir::~Revertir(void)
+{
+}
+
+void Revertir::cargar (float A[], int n)
+{ for (int i=0 ; i<n ;i++)
+     { cout<<"V["<<i+1<<"] : ";
+       cin>>A[i] ;
+     } cout<<"\n";
+}
+void Revertir::mostrar (float A[], int n)
+{ for (int i=0 ; i<n ;i++)
+     { cout<<A[i]<<" - ";
+     }
+
+}
+void Revertir::revertir (float A[],float B[],int n)
+{  int a=1;
+   cout<<"\n";
+	for (int i=0; i<n ; i++ )
+	 { B[n-a]=A[i];
+	   a++;
+	 }
+}
+
+P1 E4.cpp
+// P1 E4.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include "conio.h"
+#include <iostream>
+#include "Revertir.h"
+ using namespace std ;
+
+void main ()
+{ int N ;
+  float a[100],b[100];
+  do { cout<<"ingrese cantidad de elementos : "; 
+       cin>> N ;
+     }while (N>100 || N<0);
+  Revertir V1 , V2 ;
+
+  V1.cargar (a,N);
+  V1.mostrar (a,N);
+  V2.revertir(a,b,N);
+  V2.mostrar(b,N);
+
+getch();
+}
+
+5.	Hacer un programa para determinar si un vector es capicúa, es decir, si el vector revertido es igual al inicial, se dice que el vector es capicúa.
+Capicúa.h
+#pragma once
+class Capicua
+{
+private :
+	int n ;
+	float V[100];
+public:
+	Capicua(void);
+	~Capicua(void);
+	void cargar (float V[], int n );
+	int capicua (float V[], int n);
+};
+
+Capicúa.cpp
+#include "StdAfx.h"
+#include "Capicua.h"
+#include <iostream>
+ using namespace std;
+
+Capicua::Capicua(void)
+{
+}
+
+Capicua::~Capicua(void)
+{
+}
+
+
+void Capicua::cargar (float V[], int n )
+{ for (int i=0 ; i<n ; i++)
+     { cout<<"V["<<i+1<<"] : ";
+       cin>> V[i];
+     }
+}
+int Capicua::capicua (float V[], int n)
+{  int aux ;
+	for (int i=0; i<n ;i++)
+     { if (V[i]==V[n-i-1])
+       { aux = 0;} else {aux =1;}
+     }
+	return aux;
+}
+
+P1 E5
+// P1 E5.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include "Capicua.h"
+#include "conio.h"
+#include<iostream>
+ using namespace std;
+
+
+ void main()
+{ float Vec[100];
+  int n ;
+  do { cout<<"ingrese numero de elementos : ";
+       cin>>n;
+     }while (n<0 || n>100);
+  Capicua V1;
+  cout<<"ingrese elementos de solo una cifra \n";
+  V1.cargar(Vec,n);
+  if ((V1.capicua(Vec,n))==0) { cout<<"\n el vector es capicua";}
+  else {cout<<"\n el vector no es capicua";}
+  getch();
+}
+
+6.	Sacar el promedio de cada tres valores consecutivos en un vector.
+P1= A1 + A2 + A3 
+P2= A2 + A3 + A4
+P3= A3 + A4 + A5
+……………………
+Promedio3.h
+#pragma once
+class Promedio3
+{
+private:
+	int n ;
+	float V[100];
+public:
+	Promedio3(void);
+	~Promedio3(void);
+	void cargar (float V[], int n );
+	void promedios (float V[], int n);
+};
+
+Promedio3.cpp
+#include "StdAfx.h"
+#include "Promedio3.h"
+#include <iostream>
+ using namespace std;
+
+Promedio3::Promedio3(void)
+{
+}
+Promedio3::~Promedio3(void)
+{
+}
+
+void Promedio3::cargar (float V[], int n )
+{for (int i=0 ; i<n ; i++)
+     { cout<<"V["<<i+1<<"] : ";
+       cin>> V[i];
+     }
+}
+void Promedio3::promedios (float V[], int n)
+{for (int i=0; i<n-2; i++)
+    { int cont=0;
+      double suma= 0.0;
+      for (int j=i; j<n && cont<3; j++, cont++)
+	     { suma= suma+ V[j];
+	     }
+      double promedio = suma/cont;
+	  cout<<"P"<<i+1<<" es: "<< promedio<<endl;
+    }
+}
+
+
+// P1 E6.0.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include "Promedio3.h"
+#include "conio.h"
+#include <iostream>
+ using namespace std ;
+
+void main ()
+{ int N ;
+ float vec[100];
+ do { cout<<"ingrese numero de elementos : ";
+       cin>>N;
+     }while (N<0 || N>100);
+ Promedio3 V1 ;
+ cout<<"ingrese los elementos : \n";
+ V1.cargar(vec,N);
+ cout<<"los promedios son : \n";
+ V1.promedios(vec,N);
+ getch();	
+}
+
+
+7.	Dado un número entero, el programa debe devolver el valor escrito literalmente. Por ejemplo si se da 12 debe devolver 'DOCE'. Hacer esto hasta el valor 20. ¿ Es posible generalizar para 30, 31, 32, ....100,101,... etc. ?.
+
+8.	Dado un vector A de n números reales, obténgase la diferencia más grande entre dos elementos consecutivos de este vector.
+Diferencia.h
+#pragma once
+class Diferencia
+{
+private:
+	int n ;
+	float V[100];
+public:
+	Diferencia(void);
+	~Diferencia(void);
+	void cargar (float V[], int n );
+	float diferenciaMayor (float V[], int n);
+};
+
+Diferencia.cpp
+#include "StdAfx.h"
+#include "Diferencia.h"
+#include <iostream>
+#include "math.h"
+ using namespace std;
+
+Diferencia::Diferencia(void)
+{
+}
+
+
+Diferencia::~Diferencia(void)
+{
+}
+
+void Diferencia::cargar (float V[], int n )
+{ for (int i=0 ; i<n ; i++)
+     { cout<<"V["<<i+1<<"] : ";
+       cin>> V[i];
+     }
+}
+
+float Diferencia::diferenciaMayor (float V[], int n )
+{ float D=0 , d;
+  for (int i=0 ; i<n-1 ; i++)
+     {  d= abs (V[i]-V[i+1]);
+        if (d>D){D=d;}
+     }
+  return D ;
+}
+
+// P1 E8.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include "Diferencia.h"
+#include <iostream>
+#include "conio.h"
+ using namespace std;
+
+
+void main ()
+{ int N ;
+  float Vec[100];
+  do { cout<<"ingrese numero de elementos : ";
+       cin>>N;
+      }while (N<0 || N>100);
+  Diferencia V1 ;
+  cout<<"ingrese los elementos \n";
+  V1.cargar(Vec,N);
+  cout<<"la mayor diferencia dentro del vector es : "<<V1.diferenciaMayor(Vec,N);
+
+ getch();
+}
+
+9.	Concatenar dos vectores de tamaño n y m respectivamente. [a1,a2,......an;]  [b1,b2,....bm]; concatenado resulta [a1,a2,......an,b1,b2,....bm] con n+m elementos.
+    Concatenar.h
+    #pragma once
+class Concatenar
+    {
+private :
+	int n, m , A[100],B[100], C[200];
+public:
+	Concatenar(void);
+	~Concatenar(void);
+	void cargar (int V[], int p);
+	void concatenar(int A[], int B[], int C[], int n, int m);
+	void mostrar (int V[], int p );
+    };
+
+Concatenar.cpp
+#include "StdAfx.h"
+#include "Concatenar.h"
+#include <iostream>
+ using namespace std;
+
+Concatenar::Concatenar(void)
+{
+}
+
+Concatenar::~Concatenar(void)
+{
+}
+
+void Concatenar::cargar (int V[], int p)
+{for (int i=0 ; i<p ; i++)
+     { cout<<"V["<<i+1<<"] : ";
+       cin>> V[i];
+     }
+}
+void Concatenar::concatenar(int A[], int B[], int C[], int n, int m)
+{ C[n+m];
+  for (int i=0; i<n ;i++)
+  {C[i]=A[i];
+  }
+  int cont=0;
+  for (int j=n; j<n+m ; j++)
+  { C[j]=B[cont];
+    cont++;
+  }
+}
+
+void Concatenar::mostrar (int V[], int p )
+{ for (int i=0; i<p ; i++)
+    { cout<<"V["<<i+1<<"] : "<<V[i]<<" - ";
+    }
+}
+
+P1 E9
+// P1 E9.cpp : Defines the entry point for the console application.
+//
+#include "stdafx.h"
+#include "conio.h"
+#include <iostream>
+#include "Concatenar.h"
+ using namespace std ;
+
+void main ()
+{ int N,M; 
+  do { cout<<"ingrese numero de elementos de V1: ";
+       cin>>N;
+     }while (N<0 || N>100);
+  do { cout<<"ingrese numero de elementos de V2 : ";
+       cin>>M;
+     }while (M<0 || M>100);
+  int a[100],b[100],c[200];
+  Concatenar  V1,V2,V3;
+ cout<<"ingrese elementos de V1 \n"; V1.cargar(a,N);
+ cout<<"ingrese elementos de V2 \n"; V2.cargar(b,M);
+  V3.concatenar(a,b,c,N,M);
+ cout<<"vector concatenado \n";  V3.mostrar(c, (N+M));
+ getch ();
+}
+
+10.	Intercalar dos vectores A y B clasificados ascendentemente de tamaño n y m respectivamente en uno solo de tal forma que el resultado sea un vector clasificado
+Vectores.h
+
+#pragma once
+class Vectores
+{
+private :
+	int A[100], B[100], C[100] , n , m ;
+public:
+	Vectores(void);
+	~Vectores(void);
+	void cargar1_ordenar ();
+	void cargar2_ordenar ();
+	void intercalar ();
+	void mostrar ();
+};
+
+Vectores.cpp
+#include "StdAfx.h"
+#include "Vectores.h"
+#include <iostream>
+ using namespace std;
+
+
+Vectores::Vectores(void)
+{
+}
+Vectores::~Vectores(void)
+{
+}
+
+void Vectores::cargar1_ordenar ()
+{ cout<<"ingrese numero de elementos : ";
+  cin>>n;
+  for (int i=0 ; i<n ; i++)
+  { cout<<"V["<<i+1<<"] : ";
+    cin>>A[i];
+  }
+  int aux;
+  for (int i=0; i<n-1 ;i++)
+  { for (int j=i; j<n ; j++)
+      { if (A[i]>A[j])
+          {aux=A[j];
+           A[j]=A[i];
+		   A[i]=aux;
+          }
+      }
+  }
+}
+void Vectores::cargar2_ordenar ()
+{cout<<"ingrese numero de elementos : ";
+  cin>>m;
+  for (int i=0 ; i<m ; i++)
+  { cout<<"V["<<i+1<<"] : ";
+    cin>>B[i];
+  }
+  int aux;
+  for (int i=0; i<n-1 ;i++)
+  { for (int j=i; j<m ; j++)
+      { if (B[i]>B[j])
+          {aux=B[j];
+           B[j]=B[i];
+	    B[i]=aux;
+          }
+      }
+  }}
+void Vectores::intercalar ()
+{ int cont =0;
+  for (int i =0 ; i<n; i++)
+     { C[i]=A[i];
+     }  
+  for (int j=n ; j<n+m ;j++)
+    { C[j]=B[cont];
+      cont++;
+    }
+
+}
+void Vectores::mostrar ()
+{ for (int i=0; i<n+m ; i++)
+     { cout<<C[i]<<"  ";
+     }
+}
+
+// P1 E10.0.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include "conio.h"
+#include "Vectores.h"
+#include <iostream>
+ using namespace std;
+
+void main ()
+{ Vectores V1 ;
+  V1.cargar1_ordenar();
+  V1.cargar2_ordenar();
+  V1.intercalar();
+  V1.mostrar();
+  getch();
+}
