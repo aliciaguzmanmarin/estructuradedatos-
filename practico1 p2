@@ -1,0 +1,589 @@
+11.	Hacer un programa que permita contar número de valores negativos, positivos y ceros que hay en un vector.
+Contador.h 
+#pragma once
+class Contador
+{
+private :
+	 int n ;
+	 float V[100];
+public:
+	Contador(void);
+	~Contador(void);
+	void cargar (float V[], int n);
+	void contador (float V[], int n);
+};
+
+Contador.cpp
+#include "StdAfx.h"
+#include "Contador.h"
+#include <iostream>
+ using namespace std;
+
+Contador::Contador(void)
+{
+}
+Contador::~Contador(void)
+{
+}
+
+void Contador::cargar (float V[], int n)
+{for (int i=0 ; i<n ; i++)
+     { cout<<"V["<<i+1<<"] : ";
+       cin>> V[i];
+     }
+}
+void Contador::contador (float V[], int n)
+{ int positivos=0 , negativos=0 , ceros=0 ;
+  for (int i=0; i<n ;i++)
+     { if (V[i]==0) { ceros++;}
+	   else{ if (V[i]<0){negativos++;}
+	         else {positivos ++;}
+	       } 
+     }
+  cout<<"\n la cantidad de numeros positivos es : "<<positivos;
+  cout<<"\n la cantidad de numeros negativos es : "<<negativos ;
+  cout<<"\n la cantidad de numeros 0 es : "<<ceros;
+}
+
+P1 E11
+// P1 E11.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include "Contador.h"
+#include "conio.h"
+#include <iostream>
+ using namespace std;
+
+void main ()
+{ int N,M;
+  float Vec[100];
+  do { cout<<"ingrese numero de elementos de V1: ";
+       cin>>N;
+     }while (N<0 || N>100);
+  Contador V1;
+  cout<<"\n Ingrese los elementos del vector \n";
+  V1.cargar(Vec,N);
+  V1.contador(Vec,N);
+  getch ();
+}
+
+12.	Hacer un programa para eliminar los  números duplicados de un vector.
+Eliminar.h
+#pragma once
+class Eliminar
+{
+private :
+	int A[100], B[100], n;
+public:
+	Eliminar(void);
+	~Eliminar(void);
+	void cargar () ;
+	void mostrar ();
+	/*void eliminarRepetidos ();*/
+	void eliminarDuplicados ();
+	void eliminar (int pos);
+};
+Eliminar.cpp
+#include "StdAfx.h"
+#include "Eliminar.h"
+#include <iostream>
+ using namespace std;
+
+
+Eliminar::Eliminar(void)
+{
+}
+Eliminar::~Eliminar(void)
+{
+}
+
+
+void Eliminar::cargar ()
+{cout<<"ingrese numero de elementos : ";
+ cin>>n;
+ for (int i=0 ; i<n ; i++)
+    { cout<<"V["<<i+1<<"] : ";
+      cin>>A[i];
+    }
+}
+void Eliminar::mostrar ()
+{for (int i=0 ; i<n ; i++)
+    { cout<<A[i]<<"  ";
+    }}
+void Eliminar::eliminarDuplicados ()
+{int cont ;
+ for (int i=0 ; i<n ; i++)
+    { cont=0;
+      for (int j=0; j<n; j++)
+	     { if (A[i]==A[j])
+	         { cont++;
+			 }
+	     }
+	  if (cont==2)
+	  { int aux = A[i];
+	    for (int j=0 ; j<n ; j++)
+		  {if (aux==A[j])
+		    { eliminar (j);
+			j--;
+		    }
+		  } i =0 ;
+	  }
+    }
+}
+
+void Eliminar::eliminar (int pos)
+{ if (pos<0 || pos>=n) return ;
+  for (int i =0 ; i<n ; i++)
+    { A[i-1]=A[i];
+    } 
+  n--;
+}
+
+
+// P1 E12.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include "conio.h"
+#include "Eliminar.h"
+#include <iostream>
+ using namespace std ;
+
+void main ()
+{ Eliminar V ;
+V.cargar();
+V.eliminarDuplicados();
+V.mostrar();
+getch();	
+}
+
+
+
+
+
+13.	Hacer un programa para revertir una lista en el mismo vector.
+Revertir.h 
+#pragma once
+class Revertir
+{
+private:
+	int n ;
+	float V[100];
+public:
+	Revertir(void);
+	~Revertir(void);
+	void cargar(float V[],int n);
+	void revertir (float V[],int n);
+	void mostrar (float V[],int n);
+};
+
+Revertir.cpp
+#include "StdAfx.h"
+#include "Revertir.h"
+#include <iostream>
+ using namespace std;
+
+
+Revertir::Revertir(void)
+{
+}
+Revertir::~Revertir(void)
+{
+}
+
+
+void Revertir::cargar(float V[],int n)
+{for (int i=0 ; i<n ; i++)
+     { cout<<"V["<<i+1<<"] : ";
+       cin>> V[i];
+     }
+}
+void Revertir::revertir (float V[],int n)
+{ int aux ;
+	for (int i=0 ; i<n/2 ;i++)
+     {  aux = V[i];
+		V[i]= V[n-1-i];
+		V[n-1-i]= aux ;
+     }
+}
+void Revertir::mostrar (float V[],int n)
+{for (int i=0; i<n ; i++)
+    { cout<<"V["<<i+1<<"] : "<<V[i]<<" - ";
+    }
+}
+#include "StdAfx.h"
+#include "Revertir.h"
+#include <iostream>
+ using namespace std;
+
+
+Revertir::Revertir(void)
+{
+}
+Revertir::~Revertir(void)
+{
+}
+
+
+void Revertir::cargar(float V[],int n)
+{for (int i=0 ; i<n ; i++)
+     { cout<<"V["<<i+1<<"] : ";
+       cin>> V[i];
+     }
+}
+void Revertir::revertir (float V[],int n)
+{ int aux ;
+	for (int i=0 ; i<n/2 ;i++)
+     {  aux = V[i];
+		V[i]= V[n-1-i];
+		V[n-1-i]= aux ;
+     }
+}
+void Revertir::mostrar (float V[],int n)
+{for (int i=0; i<n ; i++)
+    { cout<<"V["<<i+1<<"] : "<<V[i]<<" - ";
+    }
+}
+
+// P1 E13.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include "conio.h"
+#include "Revertir.h"
+#include <iostream>
+ using namespace std;
+
+
+void main ()
+{ int N ;
+  float Vec [100];
+   do { cout<<"ingrese numero de elementos : ";
+       cin>>N;
+      }while (N<0 || N>100);
+   Revertir V1;
+   cout<<"ingrese los elementos del vector : \n";
+   V1.cargar(Vec,N);
+   V1.revertir(Vec,N);
+   cout<<"Vector Revertido \n";
+   V1.mostrar(Vec,N);
+   getch();
+}
+
+
+
+14.	Hacer un programa para clasificar una lista de valores (entero o realies) en orden ascendente.
+Ordenar.h 
+#pragma once
+class Ordenar
+{
+private:
+	int n;
+	float V[];
+public:
+	Ordenar(void);
+	~Ordenar(void);
+	void cargar (float V[], int n);
+	void ascendente (float V[], int n);
+	void mostrar (float V[], int n);
+};
+
+Ordenar.cpp
+#include "StdAfx.h"
+#include "Ordenar.h"
+#include <iostream>
+ using namespace std;
+
+
+Ordenar::Ordenar(void)
+{
+}
+Ordenar::~Ordenar(void)
+{
+}
+
+void Ordenar::cargar (float V[], int n)
+{for (int i=0 ; i<n ; i++)
+     { cout<<"V["<<i+1<<"] : ";
+       cin>> V[i];
+     }
+}
+void Ordenar::ascendente (float V[], int n)
+{ float aux ;
+  for (int i=0; i<n-1 ; i++)
+  { for (int j=i; j<n ; j++)
+	  if (V[i]>V[j])
+	    { aux=V[i];
+          V[i]=V[j];
+		  V[j]=aux;
+	    }
+  }
+}
+
+void Ordenar::mostrar (float V[], int n)
+{for (int i=0; i<n ; i++)
+    { cout<<"V["<<i+1<<"] : "<<V[i]<<" - ";
+    }
+}
+
+// P1 E14.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include "conio.h"
+#include"Ordenar.h"
+#include <iostream>
+ using namespace std;
+
+void main ()
+{ int N;
+  float Vec[100];
+  do { cout<<"ingrese numero de elementos : ";
+       cin>>N;
+      }while (N<0 || N>100);
+  Ordenar V1 ;
+  cout<<"ingrese los elementos\n ";
+  V1.cargar(Vec,N);
+  V1.ascendente (Vec,N);
+  cout<<"vector ordenado \n";
+  V1.mostrar(Vec,N);
+ getch();
+}
+
+
+15.	Un vector tiene la lista de alumnos y otro vector tiene las notas. Hacer un programa para obtener las tres mejores notas. Sugerencia: Clasificar el vector en orden descendente y luego listar los tres primeros, hay que tener cuidado cuando se intercambia los elementos del vector de alumnos también se debe intercambiar las notas.
+Mejor.h
+#pragma once
+class Mejor
+{
+private :
+	 int n ;
+	 float 	 N[100];
+
+public:
+	Mejor(void);
+	~Mejor(void);
+	void cargar ();
+	void ordenar ();
+	void mejoresnotas ();
+};
+Mejor.cpp
+#include "StdAfx.h"
+#include "Mejor.h"
+#include <iostream>
+ using namespace std;
+
+Mejor::Mejor(void)
+{
+}
+Mejor::~Mejor(void)
+{
+}
+
+void Mejor::cargar ()
+{ cout<<"ingrese numero de alumnos : ";
+  cin>> n;
+  
+  for (int i =0; i<n ; i++)
+     { cout<<"Alumno ["<<i+1<<"] : ";
+       cin >> N[i];
+     }
+}
+void Mejor::ordenar ()
+{ float aux;
+	for (int i=0 ; i<n-1 ;i++) 
+    {  for (int j=i+1 ; j<n; j++)
+		{if (N[i]<N[j])
+           { aux = N[i];
+             N[i]=N[j];
+			 N[j]=aux;
+           }
+        }
+}
+}
+void Mejor::mejoresnotas ()
+{ for (int i=0 ; i<3 ; i++)
+      { cout<<i+1<<" lugar "<<N[i]<<endl;
+      }
+}
+
+// P1 E15.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include "Mejor.h"
+#include "conio.h"
+
+
+void main ()
+{
+	Mejor M ;
+	M.cargar();
+	M.ordenar();
+	M.mejoresnotas();
+ getch();
+}
+
+
+16.	Confeccionar en un menú para manejar alumnos con las siguiente funciones: 1) Ingresar un alumno y su nota 2) Listar los alumnos 3) Ordenar alfabéticamente 4) Sacar la mejor nota 5) Sacar el promedio de notas.
+#pragma once
+class Alumnos
+{
+private:
+	int n ;
+	float V [100] ;
+public:
+	Alumnos(void);
+	~Alumnos(void);
+	void Ingresar ();
+	void Listar ();
+	void OrdenarAlfabeticamente ();
+	float MejorNota ();
+	float Promedio ();
+};
+
+#include "StdAfx.h"
+#include "Alumnos.h"
+#include <iostream>
+ using namespace std;
+
+Alumnos::Alumnos(void)
+{
+}
+Alumnos::~Alumnos(void)
+{
+}
+
+void Alumnos::Ingresar ()
+{ cout<<"ingrese cantidad de alumnos : ";
+  cin >> n ;
+}
+void Alumnos::Listar ()
+{}
+void Alumnos::OrdenarAlfabeticamente ()
+{}
+float Alumnos::MejorNota ()
+{ float M = V[0] ;
+  for (int i=0 ; i<n ; i++)
+   { if (V[i]>M)
+       { M=V[i];
+       }
+   }
+  return M ;
+}
+float Alumnos::Promedio ()
+{ float P ,s=0.0 ;
+  for (int i =0 ; i<n i++)
+  { s = s +V[i];
+  }
+  P =  s/n ;
+  return P ;
+}
+
+// P1 E16.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include "conio.h"
+#include <iostream>
+#include "Alumnos.h"
+ using namespace std;
+
+void main ()
+{ int opc ;
+ cout<<"              MENU     \n";
+ cout<<"(1) Ingresar Alumno y Nota \n";
+ cout<<"(2) Listar alumnos \n";
+ cout<<"(3) Ordenar Alfabeticamente \n";
+ cout<<"(4) Mejor nota \n";
+ cout<<"(5) Promedio de notas \n ";
+ cout<<" Ingrese opcion : ";
+ cin>>opc;
+  Alumnos A1 ;
+ switch (opc)
+ { case 1 : A1.Ingresar();
+           break ;
+ case 2 : A1.Listar();
+	   break;
+ case 3 : A1.OrdenarAlfabeticamente();
+	   break;
+ case 4 : cout<<"Mejor Nota : "<<A1.MejorNota();
+	   break ;
+ case 5 : cout<<"Promedio : "<<A1.Promedio();
+	   break ;
+   default : cout<<"Opcion no valida";
+	   break;
+ }
+
+ getch();
+}
+
+
+17.	Generar los primeros n números de Fibonacci en un vector.
+Fibonaci.h
+#pragma once
+class Fibonaci
+{
+private :
+	int n , V [100];
+public:
+	Fibonaci();
+	~Fibonaci(void);
+	void cargarfibo (int V[], int n);
+	void mostrar(int V[], int n);
+};
+
+Fibonaci.cpp
+#include "StdAfx.h"
+#include "Fibonaci.h"
+#include <iostream>
+ using namespace std ;
+
+Fibonaci::Fibonaci(void)
+{
+}
+
+Fibonaci::~Fibonaci(void)
+{
+}
+
+void Fibonaci::cargarfibo (int V[], int n)
+{
+       int fibo=0,a=0,b=1,k=0 ;
+           while (k<n)
+	           { fibo =a+b;
+	             b=a;
+	             a=fibo ;
+	             k++;
+				 V[k] = fibo  ;   
+               }
+}
+
+void Fibonaci::mostrar(int V[], int n)
+{for (int i=0;i<n;i++)
+     {cout<<V[i+1]<<"  "; 
+     }
+}
+
+// P1 E17.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include "conio.h"
+#include "Fibonaci.h"
+#include <iostream>
+ using namespace std ;
+
+void main ()
+{ int N,Vec[100];
+  do {cout<<"ingrese n  : "; 
+      cin>> N ;
+     }while (N>100 ||N<0);
+  Fibonaci V1 ;
+  V1.cargarfibo(Vec,N);
+  V1.mostrar(Vec,N);
+
+ getch();
+}
+
