@@ -1,0 +1,110 @@
+#pragma once
+// Base class
+class Shape 
+{
+protected:
+      int width;
+      int height;   
+public:
+      void setWidth(int w);
+      void setHeight(int h);
+};
+
+#include "StdAfx.h"
+#include "Shape.h"
+
+
+ void Shape::setWidth(int w) 
+ {
+         width = w;
+ }
+ void Shape::setHeight(int h) 
+ {
+         height = h;
+ }
+ 
+ #pragma once
+#include "Shape.h"
+class Paralelogramo : public Shape 
+{
+public:
+	Paralelogramo(void);
+	~Paralelogramo(void);
+	float getAreap ();
+	
+};
+
+
+#include "StdAfx.h"
+#include "Paralelogramo.h"
+#include "Shape.h"
+#include <iostream>
+ using namespace std;
+
+
+Paralelogramo::Paralelogramo(void)
+{
+}
+
+
+Paralelogramo::~Paralelogramo(void)
+{
+}
+
+float Paralelogramo::getAreap()
+{ int area ;
+  area = width * height ;
+  return area ;
+}
+
+#pragma once
+#include "Shape.h"
+class Rectangulo: public Shape 
+{
+public:
+	Rectangulo(void);
+	~Rectangulo(void);
+	 int getArea() { 
+         return (width * height); 
+      }
+};
+
+
+#include "StdAfx.h"
+#include "Rectangulo.h"
+
+
+Rectangulo::Rectangulo(void)
+{
+}
+
+
+Rectangulo::~Rectangulo(void)
+{
+}
+
+
+// EjemploHerencia.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+#include "Rectangulo.h"
+#include "conio.h"
+#include "Paralelogramo.h"
+
+using namespace std;
+
+int main(void) {
+   Rectangulo Rect;
+   Paralelogramo P ; 
+   Rect.setWidth(5);
+   Rect.setHeight(7);
+   P.setHeight(2);
+   P.setWidth(5);
+
+   // Muestra el área de un rectangulo
+   cout << "Total area rectangulo : " << Rect.getArea() << endl;
+   cout << "Total area paralelogramo : " << P.getAreap() << endl;
+   getch();
+   return 0;
