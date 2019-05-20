@@ -1,0 +1,110 @@
+#pragma once
+class Pila
+{
+private:
+	int V[15];
+	int tope;
+public:
+	Pila(void);
+	bool Apilar (int d);
+	bool Desapilar (int &x);
+	bool PilaVacia ();
+	bool PilaLlena();
+	void Mostrar ();
+	int getTope();
+  void EliminarPares ();
+};
+
+
+#include "StdAfx.h"
+#include "Pila.h"
+#include <iostream>
+ using namespace std;
+
+Pila::Pila(void)
+{ tope = -1 ;
+}
+
+bool Pila::Apilar(int d)
+{ if (PilaLlena()==true)
+    {cout<<"pila llena";
+     return false ;
+    }
+  else 
+    {tope++;
+     V[tope] =  d ;
+	 return true;
+    }
+}
+
+bool Pila::Desapilar(int &x)
+{ if (PilaVacia()==true)
+    { cout<<"pila vacia\n";
+      return false ;
+    }
+  else
+    {x = V[tope];
+	 tope--;
+     return true;
+    }
+}
+
+bool Pila::PilaLlena()
+{ if (tope == 15-1 )
+    { return true ;}
+  else 
+    { return false ;}
+}
+
+bool Pila::PilaVacia()
+{ if (tope==-1)
+    { return true ;}
+  else
+    {return false ;}
+}
+
+void Pila::Mostrar() 
+{  cout<<endl;
+	for (int i=tope ; i>=0;i--)
+    { cout<<V[i]<<endl; }
+	
+}
+
+int Pila::getTope()
+{return tope;}
+
+void Pila::EliminarPares ()
+{ Pila a,b ;
+  int x,c,d,D, cont=0 ;
+  cout<<"ingrese cantidad de elementos :";cin>>c;
+  while (cont<c)
+       {cin>>x ;
+        a.Apilar(x);
+		cont++;
+       }
+  int t,contpares=0 ;
+  t=a.getTope();
+  for (int i=0 ; i<=t ; i++)
+  { a.Desapilar(d);
+   if (d%2!=0)
+     {b.Apilar(d);
+      contpares++;
+     }
+  }
+ for (int i=0 ; i<contpares ;i++)
+   {b.Desapilar(D);
+    a.Apilar(D);
+   }
+ a.Mostrar();
+}
+
+
+#include "stdafx.h"
+#include "conio.h"
+#include "Pila.h"
+
+void main()
+{Pila A;
+ A.EliminarPares();
+	getch();
+}
