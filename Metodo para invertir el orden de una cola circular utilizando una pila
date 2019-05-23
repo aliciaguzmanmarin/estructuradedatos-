@@ -1,0 +1,23 @@
+void ColaC::Invertir()
+{ ColaC a,b ;
+  Pila A;
+  int c,x ;
+  cout<<"ingrese cantidad de elementos : ";cin>>c;
+  for (int i=0; i<c ;i++)
+    { cin>>x;
+      a.Encolar(x);
+    }
+  cout<<"cola original  ";
+  a.Mostrar();
+  for (int i=0; i<c ;i++)
+    {a.Desencolar(x);
+     A.Apilar(x);
+    }
+ 
+  for (int i=0 ; i<c ;i++)
+    {A.Desapilar(x);
+     b.Encolar(x);
+    }
+  cout<<"Cola invertida  ";
+  b.Mostrar();
+}
